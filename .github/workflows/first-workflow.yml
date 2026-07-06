@@ -1,0 +1,17 @@
+name: My First Workflow
+on:
+ push:
+   branches: [main]
+   paths-ignore: [.github/**]
+ schedule:
+   - cron: "1,31 8-18 * * 1-5"
+ workflow_dispatch:
+
+jobs:
+  FirstJob:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - run: |
+         echo "triggered by ${{ github.event_name }}"
+      - uses: actions/checkout@v7.0.0
