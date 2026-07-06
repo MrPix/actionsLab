@@ -3,6 +3,8 @@ on:
  push:
    branches: [main]
    paths-ignore: [.github/**]
+ pull_request:
+    branches: [ main ]
  schedule:
    - cron: "1,31 8-18 * * 1-5"
  workflow_dispatch:
@@ -13,7 +15,8 @@ jobs:
     permissions: read-all
     steps:
       - run: |
-         echo "triggered by ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+         echo "🎉 The job was triggered by event: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+         echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ." >> $GITHUB_STEP_SUMMARY
       - uses: actions/checkout@v7.0.0
 
       - name: List files in the repository
