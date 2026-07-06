@@ -13,5 +13,10 @@ jobs:
     permissions: read-all
     steps:
       - run: |
-         echo "triggered by ${{ github.event_name }}"
+         echo "triggered by ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
       - uses: actions/checkout@v7.0.0
+
+      - name: List files in the repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
