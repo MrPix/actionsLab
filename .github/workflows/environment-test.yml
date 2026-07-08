@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions: read-all
     environment:
-      name: github.event.inputs.environment
+      name: ${{ github.event.inputs.environment }}
     steps:
       - run: |
          echo "🎉 The job was triggered by event: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
